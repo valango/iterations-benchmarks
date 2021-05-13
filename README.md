@@ -6,6 +6,8 @@ Comparing performance of different looping patterns.
 
 Just install the dependencies and type: `node .` or `yarn bench` or `npm run bench`.
 
+Use command line argument 't' for using a typed array instead of a generic one: `node . t`
+
 The result will (hopefully) look something like this:
 
 ![PNG file](./results.png)

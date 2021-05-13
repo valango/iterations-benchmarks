@@ -1,17 +1,26 @@
 // $/index
 'use strict'
-const { maxLength, print, usecsFrom } = require('./utils')
+const { fatal, maxLength, print, usecsFrom } = require('./utils')
 const { readdirSync } = require('fs')
 const { join, sep } = require('path')
 const os = require('os')
 
 const SIZE = 1000000
 
-const array = [], small = []
+let array = Array(SIZE), small = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+let comment = 'native Array'
+
+if (process.argv[2] && process.argv[2][0] === 't') {
+	try {
+		array = new Uint16Array(SIZE)
+		comment = 'Uint16Array'
+	} catch (error) {
+		fatal('This javascript version does not support Uint16Array!\n')
+	}
+}
 
 for (let i = 0; i < SIZE; i += 1) {
-	array.push(Math.floor(100 * Math.random()))
-	if (i < 10) small.push(Math.floor(100 * Math.random()))
+	array[i] = Math.floor(100 * Math.random())
 }
 
 const benchmarksDir = join(process.cwd(), sep, 'benchmarks', sep)
@@ -41,7 +50,8 @@ const loadAndRun = (filename) => {
 const cores = os.cpus()
 print('Running Node.js %s on %i x %s\n', process.version, cores.length, cores[0].model)
 print('OS: %s\n\n', os.version ? os.version() : os.platform())
-print('LOOP TYPE'.padEnd(longest) + ' :    µsecs for 1M iterations\n')
+print('%s : µsecs for processing %s of %i elements\n',
+	'LOOP TYPE'.padEnd(longest), comment, SIZE)
 
 for (const filename of loadables) {
 	print('%s : %s\n',
@@ -49,7 +59,6 @@ for (const filename of loadables) {
 	if (firstResult === undefined) {
 		firstResult = result
 	} else if (result !== firstResult) {
-		process.stderr.write('\tResults do not match - aborting due to benchmark error\n')
-		process.exit(1)
+		fatal('\tResults do not match - aborting due to benchmark error\n')
 	}
 }

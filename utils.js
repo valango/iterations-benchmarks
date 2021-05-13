@@ -3,6 +3,11 @@
 
 const { format } = require('util')
 
+const fatal = (...args) => {
+	process.stderr.write(format(...args))
+	process.eexit(1)
+}
+
 /**
  * @param {string[]} strings
  * @returns {number}
@@ -17,4 +22,4 @@ const usecsFrom = t0 => {
 }
 
 
-module.exports = { maxLength, print, usecsFrom }
+module.exports = { fatal, maxLength, print, usecsFrom }
