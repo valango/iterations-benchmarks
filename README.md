@@ -6,21 +6,9 @@ Comparing performance of different looping patterns.
 
 Just install the dependencies and type: `node .` or `yarn bench` or `npm run bench`.
 
-The result will (hopefully) look something like:
+The result will (hopefully) look something like this:
 
-```
-Running Node.js v14.15.1 on 8 x Intel(R) Core(TM) i7-6820HQ CPU @ 2.70GHz
-OS: Darwin Kernel Version 18.7.0: Mon Mar  8 22:11:48 PST 2021; root:xnu-4903.278.65~1/RELEASE_X86_64
-
-LOOP TYPE      :    µsecs for 1M iterations
-forEach        :    13881
-for by index   :     2704
-for of         :    29946
-reduce         :    13485
-while by index :     2696
-while defined  :     2014
-```
-
+![PNG file](./results.png)
 
 ## Adding your own benchmarks
 
