@@ -40,7 +40,7 @@ const loadAndRun = (filename) => {
 
 const cores = os.cpus()
 print('Running Node.js %s on %i x %s\n', process.version, cores.length, cores[0].model)
-print('OS: %s\n\n', os.version())
+print('OS: %s\n\n', os.version ? os.version() : os.platform())
 print('LOOP TYPE'.padEnd(longest) + ' :    µsecs for 1M iterations\n')
 
 for (const filename of loadables) {

@@ -4,14 +4,13 @@
   "description": "Execution speed of javascript iterations.",
   "main": "index.js",
   "homepage": "",
-  "repository": "git://github.com/valango/PROJECT.git",
+  "repository": "git://github.com/valango/iteration-benchmarks.git",
   "author": "Villem Alango <villem.alango@gmail.com>",
   "license": "MIT",
-  "keywords": [],
+  "keywords": ["javascript", "benchmark", "speed", "iterations", "iterator", "loop", "performance"],
   "files": [],
   "scripts": {
     "bench": "node .",
-    "clean": "rimraf *.tmp *.l* reports yarn.lock",
     "lint": "eslint .",
     "purge": "npm run clean && rimraf node_modules"
   },
@@ -21,7 +20,7 @@
     "rimraf": "^3.0.2"
   },
   "engines": {
-    "node": ">=10.15.1"
+    "node": ">=8.0.0"
   },
   "private": true
 }
