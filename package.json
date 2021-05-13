@@ -7,14 +7,24 @@
   "repository": "git://github.com/valango/iteration-benchmarks.git",
   "author": "Villem Alango <villem.alango@gmail.com>",
   "license": "MIT",
-  "keywords": ["javascript", "benchmark", "speed", "iterations", "iterator", "loop", "performance"],
+  "keywords": [
+    "javascript",
+    "benchmark",
+    "speed",
+    "iterations",
+    "iterator",
+    "loop",
+    "performance"
+  ],
   "files": [],
   "scripts": {
     "bench": "node .",
     "lint": "eslint .",
     "purge": "npm run clean && rimraf node_modules"
   },
-  "dependencies": {},
+  "dependencies": {
+    "lodash": "^4.17.21"
+  },
   "devDependencies": {
     "eslint": "^7.26.0",
     "rimraf": "^3.0.2"
